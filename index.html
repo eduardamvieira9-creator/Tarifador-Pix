@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tarifador PIX - Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- Ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="bg-slate-900 text-slate-100 font-sans">
@@ -18,19 +17,14 @@
         Ver Gráficos de Business Intelligence (BI)
     </a>
 </div>
-    <!-- Header com Logotipo Customizado -->
     <header class="bg-slate-800/80 backdrop-blur-md border-b border-slate-700/60 p-4 sticky top-0 z-50">
         <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
             
-            <!-- LOGOTIPO COMPACTO -->
             <div class="flex items-center gap-3.5">
-                <!-- Ícone do Logo -->
                 <div class="relative flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-teal-400 to-emerald-500 text-slate-950 font-black shadow-lg shadow-teal-500/20">
                     <i class="fa-solid fa-bolt text-xl animate-pulse"></i>
-                    <!-- Detalhe do PIX flutuando no canto do logo -->
                     <span class="absolute -bottom-1 -right-1 bg-slate-900 text-[9px] text-teal-400 font-bold px-1 py-0.5 rounded border border-teal-500/30 tracking-wider">PIX</span>
                 </div>
-                <!-- Texto do Logo -->
                 <div>
                     <div class="flex items-center gap-2">
                         <span class="text-xl font-black tracking-tight text-white">NEXUS</span>
@@ -40,7 +34,6 @@
                 </div>
             </div>
 
-            <!-- Status de Conexão Hardware -->
             <div class="flex items-center gap-2 bg-slate-900/80 px-4 py-2 rounded-full border border-slate-700/80 shadow-inner">
                 <span class="relative flex h-2.5 w-2.5">
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -53,9 +46,7 @@
 
     <main class="max-w-6xl mx-auto p-4 md:p-6 space-y-6">
 
-        <!-- Grid de Status do Hardware -->
         <section class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <!-- Relé -->
             <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex items-center justify-between shadow-sm">
                 <div>
                     <p class="text-xs font-medium text-slate-400 uppercase tracking-wider">Status do Relé</p>
@@ -65,7 +56,6 @@
                     <i class="fa-solid fa-toggle-off"></i>
                 </div>
             </div>
-            <!-- Display TFT -->
             <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex items-center justify-between shadow-sm">
                 <div>
                     <p class="text-xs font-medium text-slate-400 uppercase tracking-wider">Display TFT ST7789</p>
@@ -75,11 +65,10 @@
                     <i class="fa-solid fa-tv"></i>
                 </div>
             </div>
-            <!-- Faturamento do Dia -->
             <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex items-center justify-between shadow-sm">
                 <div>
                     <p class="text-xs font-medium text-slate-400 uppercase tracking-wider">Vendas Hoje</p>
-                    <h3 id="faturamento" class="text-2xl font-black text-emerald-400 mt-0.5">R$ 15,00</h3>
+                    <h3 id="faturamento" class="text-2xl font-black text-emerald-400 mt-0.5">R$ 20,00</h3>
                 </div>
                 <div class="w-12 h-12 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-xl border border-emerald-500/20">
                     <i class="fa-solid fa-wallet"></i>
@@ -87,10 +76,8 @@
             </div>
         </section>
 
-        <!-- Corpo Principal -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
             
-            <!-- Painel de Controle / Simulador (Esquerda) -->
             <div class="lg:col-span-1 bg-slate-800 p-5 rounded-xl border border-slate-700 space-y-4 shadow-sm">
                 <h2 class="text-sm font-bold uppercase tracking-wider text-slate-200 border-b border-slate-700 pb-2 flex items-center gap-2">
                     <i class="fa-solid fa-sliders text-teal-400"></i>Simulador de Teste
@@ -107,7 +94,6 @@
                     </button>
                 </div>
 
-                <!-- Informações Técnicas do Projeto -->
                 <div class="mt-6 pt-4 border-t border-slate-700 space-y-2.5 text-xs text-slate-400">
                     <p class="font-bold text-slate-300 uppercase tracking-wider text-[10px]">Especificações de Hardware:</p>
                     <div class="flex justify-between border-b border-slate-700/40 pb-1">
@@ -125,13 +111,11 @@
                 </div>
             </div>
 
-            <!-- Logs e Transações em Tempo Real (Direita) -->
             <div class="lg:col-span-2 bg-slate-800 p-5 rounded-xl border border-slate-700 flex flex-col h-[400px] shadow-sm">
                 <h2 class="text-sm font-bold uppercase tracking-wider text-slate-200 border-b border-slate-700 pb-2 mb-4 flex items-center gap-2">
                     <i class="fa-solid fa-terminal text-amber-400"></i>Log de Eventos do Sistema
                 </h2>
                 
-                <!-- Lista de Logs -->
                 <div id="log-container" class="flex-1 overflow-y-auto space-y-2 font-mono text-xs p-3 bg-slate-900 rounded-lg border border-slate-700/80 shadow-inner">
                     <div class="text-slate-500">[10:52:10] Inicializando ESP32...</div>
                     <div class="text-slate-500">[10:52:12] Conectado à rede Wi-Fi local.</div>
@@ -145,9 +129,17 @@
         </div>
     </main>
 
-    <!-- JavaScript Interativo -->
     <script>
-        let faturamentoAtual = 15.00;
+        // Inicializa o faturamento buscando da memória comum ou define o padrão inicial de R$ 20,00 (4 transações)
+        let faturamentoAtual = parseFloat(localStorage.getItem('faturamentoHoje'));
+        if (isNaN(faturamentoAtual)) {
+            faturamentoAtual = 20.00;
+            localStorage.setItem('faturamentoHoje', 20.00);
+            localStorage.setItem('totalVendas', 4);
+        }
+        
+        // Exibe o valor inicial correto na tela ao carregar a página
+        document.getElementById('faturamento').innerText = `R$ ${faturamentoAtual.toFixed(2).replace('.', ',')}`;
 
         function adicionarLog(mensagem, tipo = 'info') {
             const container = document.getElementById('log-container');
@@ -164,7 +156,13 @@
         }
 
         function simularAprovacao() {
+            // Atualiza os valores locais e grava na memória compartilhada com o BI
             faturamentoAtual += 5.00;
+            localStorage.setItem('faturamentoHoje', faturamentoAtual);
+            
+            let totalVendas = parseInt(localStorage.getItem('totalVendas')) || 4;
+            localStorage.setItem('totalVendas', totalVendas + 1);
+
             document.getElementById('faturamento').innerText = `R$ ${faturamentoAtual.toFixed(2).replace('.', ',')}`;
             
             const statusRele = document.getElementById('status-rele');
@@ -188,8 +186,10 @@
         }
 
         function resetarSimulador() {
-            faturamentoAtual = 0.00;
-            document.getElementById('faturamento').innerText = "R$ 0,00";
+            faturamentoAtual = 20.00;
+            localStorage.setItem('faturamentoHoje', 20.00);
+            localStorage.setItem('totalVendas', 4);
+            document.getElementById('faturamento').innerText = "R$ 20,00";
             document.getElementById('log-container').innerHTML = `<div class="text-slate-500">[${new Date().toLocaleTimeString('pt-BR')}] Sistema reinicializado via console.</div>`;
             adicionarLog("Aguardando novas transações...");
         }
